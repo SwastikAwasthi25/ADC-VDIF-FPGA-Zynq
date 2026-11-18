@@ -1,5 +1,16 @@
 # ADC–VDIF FPGA on Zynq-7000
 
+## M3 CH0 physical-hardware and UDP checkpoint (18 November 2026)
+
+**Update to the M2.5 status above:** An additional **M3 CH0 hardware proof of concept** has now been demonstrated on a Red Pitaya STEM 125-14 Z7020 4IN v1.3. Real 5 MHz input was seen in Vivado ILA; a 1,024-byte 8-bit ADC-derived payload plus 32-byte VDIF header was read through Linux BRAM mapping and sent as **one 1,056-byte UDP datagram** to Windows. Source and receiver SHA-256 were identical. This does **not** establish sustained or continuous Ethernet streaming.
+
+- [M3 CH0 hardware/UDP verification record](docs/M3_CH0_HARDWARE_UDP_VERIFICATION.md)
+- [Development roadmap and future checkpoints](docs/ROADMAP.md)
+
+**Publication status:** The verified M3 working files and bitstream are currently on the development workstation; **this public GitHub repository has not yet received the complete M3 source snapshot**. Publication rights, reproducible source dependencies, and a fresh-clone Vivado rebuild must be checked before tagging the M3 release. The historical M2.5 README status below describes the **earlier** checkpoint, not the new M3 milestone.
+
+---
+
 FPGA prototyping checkpoint for a single-channel ADC capture path, VDIF packetization, on-chip BRAM storage, and AXI-accessible readback on a Zynq-7000 device.
 
 **Status (17 November 2026):** Vivado 2025.2 simulation, synthesis, place-and-route, and bitstream generation completed. **Physical board capture and Zynq software readback have not yet been demonstrated.**
