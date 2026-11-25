@@ -1,0 +1,46 @@
+`timescale 1ns / 1ps
+module m3_adc_spi_ch0_bd_ref_cal8_new (
+    input wire ps_clk_50,
+    input wire ps_resetn,
+    input wire adc_clk0_p,
+    input wire adc_clk0_n,
+    input wire adc_clk1_p,
+    input wire adc_clk1_n,
+    input wire [27:0] adc_data_pins,
+    output wire spi_csa_o,
+    output wire spi_csb_o,
+    output wire spi_clk_o,
+    output wire spi_mosi_o,
+    (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 ch0_clk CLK", X_INTERFACE_PARAMETER = "FREQ_HZ 125000000" *) output wire ch0_clk,
+    output wire ch0_resetn,
+    output wire [13:0] ch0_raw,
+    output wire frontend_ready,
+    output wire spi_done,
+    input wire cal_exit_req_ps,
+    output wire spi_initialized_ps,
+    output wire pattern_active_ps,
+    output wire normal_ready_ps
+);
+    m3_adc_spi_ch0_bridge u_m3_adapter (
+        .ps_clk_50(ps_clk_50),
+        .ps_resetn(ps_resetn),
+        .adc_clk0_p(adc_clk0_p),
+        .adc_clk0_n(adc_clk0_n),
+        .adc_clk1_p(adc_clk1_p),
+        .adc_clk1_n(adc_clk1_n),
+        .adc_data_pins(adc_data_pins),
+        .spi_csa_o(spi_csa_o),
+        .spi_csb_o(spi_csb_o),
+        .spi_clk_o(spi_clk_o),
+        .spi_mosi_o(spi_mosi_o),
+        .ch0_clk(ch0_clk),
+        .ch0_resetn(ch0_resetn),
+        .ch0_raw(ch0_raw),
+        .frontend_ready(frontend_ready),
+        .spi_done(spi_done),
+        .cal_exit_req_ps(cal_exit_req_ps),
+        .spi_initialized_ps(spi_initialized_ps),
+        .pattern_active_ps(pattern_active_ps),
+        .normal_ready_ps(normal_ready_ps)
+    );
+endmodule

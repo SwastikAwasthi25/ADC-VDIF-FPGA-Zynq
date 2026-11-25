@@ -1,0 +1,249 @@
+`timescale 1ns / 1ps
+// EXPERIMENTAL control-plane CDC for V4. NOT AN AXI/AXI-LITE SLAVE.
+// A shared asynchronous reset rst_n MUST assert for both clock domains.
+// Its deassertion is internally synchronized separately for each domain.
+// Requests are single PS-clock pulses. Inputs are ignored while busy.
+// Payload bus crossing is coherent by a toggle + held-data handshake:
+// the transmitting domain holds each bus unchanged until a synchronized
+// response returns; the receiving domain samples only after sync delay.
+// For standalone XSim validation BEFORE attaching any PS AXI register slave.
+module v4_frame_mailbox_cdc (
+    input wire         ps_clk,
+    input wire         adc_clk,
+    input wire         rst_n,
+
+    // PS-domain snapshot request and latched coherent result.
+    input wire         ps_status_req,
+    output reg         ps_status_busy,
+    output reg         ps_status_valid, // 1-cycle pulse, data registers persist
+    output reg [1:0]   ps_frame_ready,
+    output reg [31:0]  ps_bank0_sequence,
+    output reg [31:0]  ps_bank1_sequence,
+    output reg [31:0]  ps_completed_frames,
+
+    // PS-domain ACK transaction: bank AND expected sequence MUST match.
+    input wire         ps_ack_req,
+    input wire         ps_ack_bank,
+    input wire [31:0]  ps_ack_expected_sequence,
+    output reg         ps_ack_busy,
+    output reg         ps_ack_done,  // 1-cycle pulse, accepted register persists
+    output reg         ps_ack_accepted,
+
+    // ADC domain connection to the original v3 ping-pong frame sink.
+    input wire [1:0]   adc_frame_ready,
+    input wire [31:0]  adc_bank0_sequence,
+    input wire [31:0]  adc_bank1_sequence,
+    input wire [31:0]  adc_completed_frames,
+    output reg         adc_sw_ack_valid,
+    output reg         adc_sw_ack_bank
+);
+    // Common reset assertion / independently synchronized release.
+    (* ASYNC_REG = "TRUE" *) reg [2:0] ps_rst_pipe;
+    (* ASYNC_REG = "TRUE" *) reg [2:0] adc_rst_pipe;
+    always @(posedge ps_clk or negedge rst_n) begin
+        if (!rst_n) ps_rst_pipe <= 3'b000;
+        else ps_rst_pipe <= {ps_rst_pipe[1:0], 1'b1};
+    end
+    always @(posedge adc_clk or negedge rst_n) begin
+        if (!rst_n) adc_rst_pipe <= 3'b000;
+        else adc_rst_pipe <= {adc_rst_pipe[1:0], 1'b1};
+    end
+
+    // PS -> ADC: request toggles and held request payload.
+    reg status_req_toggle;
+    reg ack_req_toggle;
+    reg ack_bank_held;
+    reg [31:0] ack_seq_held;
+
+    // ADC -> PS: coherent response bundles held until next request.
+    reg status_reply_toggle;
+    reg [1:0]  status_ready_held;
+    reg [31:0] status_seq0_held, status_seq1_held;
+    reg [31:0] status_count_held;
+    reg ack_reply_toggle;
+    reg ack_result_held;
+
+    // Explicit CDC synchronization of control toggles only.
+    (* ASYNC_REG = "TRUE" *) reg status_req_meta, status_req_sync;
+    (* ASYNC_REG = "TRUE" *) reg ack_req_meta, ack_req_sync;
+    (* ASYNC_REG = "TRUE" *) reg status_reply_meta, status_reply_sync;
+    (* ASYNC_REG = "TRUE" *) reg ack_reply_meta, ack_reply_sync;
+
+    reg status_req_seen, ack_req_seen;
+    reg status_reply_seen, ack_reply_seen;
+    reg [1:0] status_ps_settle, ack_ps_settle;
+    reg adc_ack_finalize;
+
+    // PS domain: accept new request only if matching transaction idle.
+    // Extra settle cycles after synchronized reply before sampling wide bus.
+    always @(posedge ps_clk or negedge rst_n) begin
+        if (!rst_n) begin
+            status_reply_meta <= 1'b0;
+            status_reply_sync <= 1'b0;
+            ack_reply_meta <= 1'b0;
+            ack_reply_sync <= 1'b0;
+            status_req_toggle <= 1'b0;
+            ack_req_toggle <= 1'b0;
+            ack_bank_held <= 1'b0;
+            ack_seq_held <= 32'd0;
+            status_reply_seen <= 1'b0;
+            ack_reply_seen <= 1'b0;
+            status_ps_settle <= 2'd0;
+            ack_ps_settle <= 2'd0;
+            ps_status_busy <= 1'b0;
+            ps_status_valid <= 1'b0;
+            ps_frame_ready <= 2'b00;
+            ps_bank0_sequence <= 32'd0;
+            ps_bank1_sequence <= 32'd0;
+            ps_completed_frames <= 32'd0;
+            ps_ack_busy <= 1'b0;
+            ps_ack_done <= 1'b0;
+            ps_ack_accepted <= 1'b0;
+        end else if (!ps_rst_pipe[2]) begin
+            status_reply_meta <= 1'b0;
+            status_reply_sync <= 1'b0;
+            ack_reply_meta <= 1'b0;
+            ack_reply_sync <= 1'b0;
+            status_req_toggle <= 1'b0;
+            ack_req_toggle <= 1'b0;
+            ack_bank_held <= 1'b0;
+            ack_seq_held <= 32'd0;
+            status_reply_seen <= 1'b0;
+            ack_reply_seen <= 1'b0;
+            status_ps_settle <= 2'd0;
+            ack_ps_settle <= 2'd0;
+            ps_status_busy <= 1'b0;
+            ps_status_valid <= 1'b0;
+            ps_frame_ready <= 2'b00;
+            ps_bank0_sequence <= 32'd0;
+            ps_bank1_sequence <= 32'd0;
+            ps_completed_frames <= 32'd0;
+            ps_ack_busy <= 1'b0;
+            ps_ack_done <= 1'b0;
+            ps_ack_accepted <= 1'b0;
+        end else begin
+            status_reply_meta <= status_reply_toggle;
+            status_reply_sync <= status_reply_meta;
+            ack_reply_meta <= ack_reply_toggle;
+            ack_reply_sync <= ack_reply_meta;
+            ps_status_valid <= 1'b0;
+            ps_ack_done <= 1'b0;
+
+            if (!ps_status_busy) begin
+                if (ps_status_req) begin
+                    status_req_toggle <= ~status_req_toggle;
+                    ps_status_busy <= 1'b1;
+                end
+            end else if (status_ps_settle != 0) begin
+                status_ps_settle <= status_ps_settle - 1'b1;
+                if (status_ps_settle == 1) begin
+                    // ADC holds all four fields stable until new request.
+                    ps_frame_ready <= status_ready_held;
+                    ps_bank0_sequence <= status_seq0_held;
+                    ps_bank1_sequence <= status_seq1_held;
+                    ps_completed_frames <= status_count_held;
+                    ps_status_busy <= 1'b0;
+                    ps_status_valid <= 1'b1;
+                end
+            end else if (status_reply_sync != status_reply_seen) begin
+                status_reply_seen <= status_reply_sync;
+                status_ps_settle <= 2'd2;
+            end
+
+            if (!ps_ack_busy) begin
+                if (ps_ack_req) begin
+                    ack_bank_held <= ps_ack_bank;
+                    ack_seq_held <= ps_ack_expected_sequence;
+                    ack_req_toggle <= ~ack_req_toggle;
+                    ps_ack_busy <= 1'b1;
+                end
+            end else if (ack_ps_settle != 0) begin
+                ack_ps_settle <= ack_ps_settle - 1'b1;
+                if (ack_ps_settle == 1) begin
+                    ps_ack_accepted <= ack_result_held;
+                    ps_ack_done <= 1'b1;
+                    ps_ack_busy <= 1'b0;
+                end
+            end else if (ack_reply_sync != ack_reply_seen) begin
+                ack_reply_seen <= ack_reply_sync;
+                ack_ps_settle <= 2'd2;
+            end
+        end
+    end
+
+    // ADC domain: capture coherent snapshot on request. Guard ACK using the
+    // current bank-generation identity (not just the bank number).
+    // The actual sink consumes the registered adc_sw_ack_valid on the NEXT
+    // ADC rising edge. Only then do we toggle reply to PS.
+    always @(posedge adc_clk or negedge rst_n) begin
+        if (!rst_n) begin
+            status_req_meta <= 1'b0;
+            status_req_sync <= 1'b0;
+            ack_req_meta <= 1'b0;
+            ack_req_sync <= 1'b0;
+            status_req_seen <= 1'b0;
+            ack_req_seen <= 1'b0;
+            status_reply_toggle <= 1'b0;
+            ack_reply_toggle <= 1'b0;
+            status_ready_held <= 2'b00;
+            status_seq0_held <= 32'd0;
+            status_seq1_held <= 32'd0;
+            status_count_held <= 32'd0;
+            ack_result_held <= 1'b0;
+            adc_sw_ack_valid <= 1'b0;
+            adc_sw_ack_bank <= 1'b0;
+            adc_ack_finalize <= 1'b0;
+        end else if (!adc_rst_pipe[2]) begin
+            status_req_meta <= 1'b0;
+            status_req_sync <= 1'b0;
+            ack_req_meta <= 1'b0;
+            ack_req_sync <= 1'b0;
+            status_req_seen <= 1'b0;
+            ack_req_seen <= 1'b0;
+            status_reply_toggle <= 1'b0;
+            ack_reply_toggle <= 1'b0;
+            status_ready_held <= 2'b00;
+            status_seq0_held <= 32'd0;
+            status_seq1_held <= 32'd0;
+            status_count_held <= 32'd0;
+            ack_result_held <= 1'b0;
+            adc_sw_ack_valid <= 1'b0;
+            adc_sw_ack_bank <= 1'b0;
+            adc_ack_finalize <= 1'b0;
+        end else begin
+            status_req_meta <= status_req_toggle;
+            status_req_sync <= status_req_meta;
+            ack_req_meta <= ack_req_toggle;
+            ack_req_sync <= ack_req_meta;
+            adc_sw_ack_valid <= 1'b0;
+
+            if (status_req_sync != status_req_seen) begin
+                status_req_seen <= status_req_sync;
+                status_ready_held <= adc_frame_ready;
+                status_seq0_held <= adc_bank0_sequence;
+                status_seq1_held <= adc_bank1_sequence;
+                status_count_held <= adc_completed_frames;
+                status_reply_toggle <= ~status_reply_toggle;
+            end
+
+            if (adc_ack_finalize) begin
+                // Sink sees adc_sw_ack_valid from prior ADC cycle here.
+                adc_ack_finalize <= 1'b0;
+                ack_reply_toggle <= ~ack_reply_toggle;
+            end else if (ack_req_sync != ack_req_seen) begin
+                ack_req_seen <= ack_req_sync;
+                if (adc_frame_ready[ack_bank_held] &&
+                    ((ack_bank_held ? adc_bank1_sequence : adc_bank0_sequence)
+                      == ack_seq_held)) begin
+                    adc_sw_ack_valid <= 1'b1;
+                    adc_sw_ack_bank <= ack_bank_held;
+                    ack_result_held <= 1'b1;
+                    adc_ack_finalize <= 1'b1;
+                end else begin
+                    ack_result_held <= 1'b0;
+                    ack_reply_toggle <= ~ack_reply_toggle;
+                end
+            end
+        end
+    end
+endmodule
