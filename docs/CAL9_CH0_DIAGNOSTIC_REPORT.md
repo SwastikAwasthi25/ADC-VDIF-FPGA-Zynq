@@ -1,7 +1,7 @@
 # CAL9 CH0 diagnostic acquisition — engineering verification report
 
 **Date:** 25 November 2026  
-**Status:** Diagnostic acquisition PASS; source release and clean-clone build NOT yet qualified.  
+**Status:** Diagnostic acquisition PASS; public source subset released and Git clone verified; clean-clone Vivado build NOT qualified.  
 **Scope:** Single-channel periodic ADC acquisition on a Zynq-7000 prototype, not a scientific deployment authorization.
 
 ## Executive summary
@@ -58,7 +58,7 @@ Operator-executed laptop analysis reported all three original file hashes matchi
 Service p99 242.116 us; two service times exceeded 1000 us; host observation intervals reached 2626.583 us. No hard real-time guarantee follows. Frequency estimates assume nominal sample clock; interpolation is not calibrated metrology. A known waveform sanity check and double-read equality do not independently prove every ADC sample correct.
 
 ## Evidence and reproducibility
-Results above are transcribed from operator-provided terminal outputs, not a new execution in GitHub. The original recordings, logs, waveform JSON, native sources, executable and 12-file manifest remain on the workstation. This report does not include raw research data or lab-owned sources. Publication review and exact dependency export are required before distributing them.
+Results above are transcribed from operator-provided terminal outputs, not a new execution in GitHub. The original recordings, logs, waveform JSON, native sources, executable and 12-file manifest remain on the workstation. Raw recordings remain offline. The approved public source subset was subsequently published and merged into main; restricted dependencies remain withheld. See [recovery guide](CAL9_RECOVERY_GUIDE.md).
 
 ## Release boundaries
 - Scientific deployment: NO-GO.
