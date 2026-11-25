@@ -61,6 +61,7 @@ Historical M2.5 constrained timing was WNS +0.270 ns, WHS +0.031 ns, TNS 0; four
 |---|---|
 | Latest public RTL, XDC, testbench and host software | [CAL9 milestone](milestones/cal9_ch0/) |
 | Diagnostic acquisition results | [Engineering report](docs/CAL9_CH0_DIAGNOSTIC_REPORT.md) |
+| Recovery and offline deployment instructions | [Recovery guide](docs/CAL9_RECOVERY_GUIDE.md) |
 | Exact tested firmware provenance | [Frozen baseline](docs/CAL9_AS_TESTED_BASELINE.md) |
 | Historical hardware UDP checkpoint | [M3 verification](docs/M3_CH0_HARDWARE_UDP_VERIFICATION.md) |
 | Earlier simulation evidence | [Verification](docs/VERIFICATION.md) |
