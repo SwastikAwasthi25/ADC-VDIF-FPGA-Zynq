@@ -1,0 +1,15 @@
+XSim 2025.2; operator execution; selected exact result lines only.
+Simulation finish: 6689400 ns
+Original archive SHA-256: DA0558E6732D710422DD43C32B31DC66245627D4E995C467D91B19C909D5E569
+Executed testbench SHA-256: 77B771175DF74A672E362ACFF2D87B1F1F7062D8F893C740284AABC5900B54AD
+
+STALLED_FRAME_PASS case=bank_reuse bank=0 seq=0 raw=1024 words=264 stalls=134 header=8 payload=8 final=9
+STALLED_FRAME_PASS case=bank_reuse bank=1 seq=1 raw=1024 words=264 stalls=151 header=8 payload=8 final=8
+STALLED_FRAME_PASS case=bank_reuse bank=0 seq=2 raw=1024 words=264 stalls=191 header=8 payload=8 final=9
+THREE_STALLED_FRAMES_BANK_REUSE_PASS
+STALLED_LAST_WORD_RESET_REACHED transfers=263 writes=263
+RESET_BOUNDARY_WRITES count=0
+STALLED_PARTIAL_FRAME_INVALIDATED
+STALLED_FRAME_PASS case=reset_recovery bank=0 seq=0 raw=1024 words=264 stalls=157 header=8 payload=8 final=8
+STALLED_RESET_RECOVERY_ACK_STOP_PASS
+CAL10_PHASE9C6D_FIX1_BACKPRESSURE_MODEL_PASS

@@ -2,9 +2,11 @@
 
 FPGA and embedded Linux acquisition prototype for the high-altitude balloon lightning-localization instrumentation effort at IIT Kanpur SPARC Lab.
 
-**Latest milestone — 25 November 2026:** CAL9 V3 single-channel periodic diagnostic acquisition demonstrated on physical Red Pitaya hardware. Public RTL and recorder sources are available on main. This is an engineering checkpoint, not a flight-ready or scientific recording release.
+**Latest engineering milestone — 26 November 2026:** CAL10 CH0 integrated RTL/HLS simulation passed normal acquisition, reset recovery and backpressure regressions (8 complete frames, 8,192 raw samples, 2,112 VDIF words, 633 stalled cycles across four complete backpressure frames). See [CAL10 verification](docs/CAL10_INTEGRATED_VERIFICATION.md) and [source checkpoint](milestones/cal10_ch0/). CAL10 has not been tested on hardware.
 
-## Key results
+**Latest physical milestone — 25 November 2026:** CAL9 V3 single-channel periodic diagnostic acquisition demonstrated on physical Red Pitaya hardware. Public RTL and recorder sources are available on main. This is an engineering checkpoint, not a flight-ready or scientific recording release.
+
+## Key results — CAL9 physical diagnostic
 
 | Metric | Observed result |
 |---|---:|
@@ -51,7 +53,8 @@ Each frame consists of a 32-byte VDIF header and 1,024-byte payload (264 32-bit 
 | M4 | Four-channel simulation development; simultaneous physical acquisition not qualified |
 | CAL8 / CAL9 | Calibration gating, CDC mailbox, reset handling, periodic capture and bank ownership |
 | Native V2 / V3 | RAM-first recording, concurrent writer, ring wraparound and injected writer-failure tests |
-| CAL9 V3 (25 Nov) | 10 s, 60 s and 300 s concurrent diagnostic runs; final public source snapshot |
+| CAL9 V3 (25 Nov) | 10 s, 60 s and 300 s concurrent diagnostic runs; physical diagnostic baseline |
+| CAL10 (26 Nov) | D8 capture, corrected routed reset topology and integrated simulation regressions; hardware HOLD |
 
 Historical M2.5 constrained timing was WNS +0.270 ns, WHS +0.031 ns, TNS 0; four reported skew constraints met. Its external ADC delays and debug timing were incomplete. These are separate from CAL9 results.
 
@@ -59,7 +62,9 @@ Historical M2.5 constrained timing was WNS +0.270 ns, WHS +0.031 ns, TNS 0; four
 
 | Resource | Location |
 |---|---|
-| Latest public RTL, XDC, testbench and host software | [CAL9 milestone](milestones/cal9_ch0/) |
+| Latest simulation-verified RTL, XDC and testbenches | [CAL10 milestone](milestones/cal10_ch0/) |
+| CAL10 verification evidence | [Integrated verification](docs/CAL10_INTEGRATED_VERIFICATION.md) |
+| Physical diagnostic RTL and host software | [CAL9 milestone](milestones/cal9_ch0/) |
 | Diagnostic acquisition results | [Engineering report](docs/CAL9_CH0_DIAGNOSTIC_REPORT.md) |
 | Recovery and offline deployment instructions | [Recovery guide](docs/CAL9_RECOVERY_GUIDE.md) |
 | Exact tested firmware provenance | [Frozen baseline](docs/CAL9_AS_TESTED_BASELINE.md) |
