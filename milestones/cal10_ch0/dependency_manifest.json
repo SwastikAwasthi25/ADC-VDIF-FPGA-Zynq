@@ -1,0 +1,318 @@
+{
+  "tool": "Vivado XSim 2025.2",
+  "compile_order": [
+    {
+      "order": 1,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/new/cal9_hls_sync_reset_bd_ref.v",
+      "sha256": "63C05F31D1AD0EC0C180957ECC1EEE1E9532747A1F1A2E589C4B1569B10E713A",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/new/cal9_hls_sync_reset_bd_ref.v"
+    },
+    {
+      "order": 2,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/new/cal9_hls_sync_reset_candidate_v2.sv",
+      "sha256": "E864BD435139E84E23AB4B0FFD68427FA725633F580722F1BAD5D04A157B5F8F",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/new/cal9_hls_sync_reset_candidate_v2.sv"
+    },
+    {
+      "order": 3,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/new/cal9_stream_isolation_bd_ref.v",
+      "sha256": "36E425498FFE6BC422327F366DD742B045DD402916A3FDA6A9839C5226229931",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/new/cal9_stream_isolation_bd_ref.v"
+    },
+    {
+      "order": 4,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_ch0_oneshot_diag_isolated_v5/ch0_oneshot_rtl/ch0_oneshot_capture_gate.v",
+      "sha256": "494D4540622BB604FDDD73027DD0CEFA2D3679E7890EBC713FA23E462C954AC9",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_ch0_oneshot_diag_isolated_v5/ch0_oneshot_rtl/ch0_oneshot_capture_gate.v"
+    },
+    {
+      "order": 5,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_source_snapshot/candidate_bridge/m25_pps_once.v",
+      "sha256": "56389A165B7325F9B29F298EC0F94D10983D84E24F99FC83BC3B4BA377708326",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_source_snapshot/candidate_bridge/m25_pps_once.v"
+    },
+    {
+      "order": 6,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_phase4c_link_bd_ref.v",
+      "sha256": "9DBAFD847C0D8EB20BED61B93C0509AD8A9515B84A9DD6F380B08AF143E14766",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_phase4c_link_bd_ref.v"
+    },
+    {
+      "order": 7,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_ps_link_ready_experimental.sv",
+      "sha256": "C9B7A5FCE6C8C213B0673D12F8EEB8D6034A200B92E1FB6BE0B8E81F9DB9092E",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_ps_link_ready_experimental.sv"
+    },
+    {
+      "order": 8,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_phase4c_mailbox_bd_ref.v",
+      "sha256": "0FFD3DF7D8B20B9B2FE8BCD2455FA432C4359E37B9C049FC7A326346C5E6E6AB",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_phase4c_mailbox_bd_ref.v"
+    },
+    {
+      "order": 9,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_frame_mailbox_cdc_domains_experimental.sv",
+      "sha256": "92F3754F286B6E0AE9EC3534E90297456E212D6E1416A21277E322C63CA0ABAD",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_frame_mailbox_cdc_domains_experimental.sv"
+    },
+    {
+      "order": 10,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase2a_fix1/v4_periodic_ch0_ref.v",
+      "sha256": "F043F7CCBD5FD589A10D9FE7733544927D664823B05A688082E147996F903B48",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase2a_fix1/v4_periodic_ch0_ref.v"
+    },
+    {
+      "order": 11,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_candidate_rtl/adc_ch0_periodic_live_bridge.sv",
+      "sha256": "5640AC5978F42BDC6AC078ABBE104373AC0C061CD3FD66E89B8EC4DCE87AA1D7",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_candidate_rtl/adc_ch0_periodic_live_bridge.sv"
+    },
+    {
+      "order": 12,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_candidate_rtl/cal10_decimator_d8.sv",
+      "sha256": "0F0824098993B2906FC4D73C3FAF704D2BB50A42907E0BE73B2B7F9E2041B0C0",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_candidate_rtl/cal10_decimator_d8.sv"
+    },
+    {
+      "order": 13,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_source_snapshot/candidate_bridge/adc_ch0_frame_buffer.v",
+      "sha256": "4BF259EB02FCA8868053EE645918E35DC7771F1524B7E6AA6839844E056DB59F",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_source_snapshot/candidate_bridge/adc_ch0_frame_buffer.v"
+    },
+    {
+      "order": 14,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase2a_scalar_fix1/v4_pingpong_scalar_ref.v",
+      "sha256": "F6A08DF395DD6F9D736F58079D7AFD312E6F3474FE75FFF3CC064AC94B4800FA",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase2a_scalar_fix1/v4_pingpong_scalar_ref.v"
+    },
+    {
+      "order": 15,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_candidate_rtl/vdif_pingpong_frame_sink.sv",
+      "sha256": "E33CDD080608230159F0BEE02B6882D289BD6EC077661ED3A75DE1E2C285B0E2",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_candidate_rtl/vdif_pingpong_frame_sink.sv"
+    },
+    {
+      "order": 16,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/ch0_cal8/cal8_rtl_v5/v4_ps_axil_epoch_bd_ref_cal8_new.v",
+      "sha256": "6476B30A623CFE9EC7DB15B3D6576049D28EEC0358040F1D0DA20ACAD754A573",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/ch0_cal8/cal8_rtl_v5/v4_ps_axil_epoch_bd_ref_cal8_new.v"
+    },
+    {
+      "order": 17,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/ch0_cal8/cal8_rtl/v4_ps_axil_control_epoch_cal8.sv",
+      "sha256": "437512AA244B4DEDEFA97F85EECF5B6129406BFB980C291D321876C85DEC28FB",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/ch0_cal8/cal8_rtl/v4_ps_axil_control_epoch_cal8.sv"
+    },
+    {
+      "order": 18,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_phase4c_reset_bd_ref.v",
+      "sha256": "0E00990E362F3006DFA9358EFBBA3D2E02A4F681BD35914FF7A11D0E2C9D4A5F",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_phase4c_reset_bd_ref.v"
+    },
+    {
+      "order": 19,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_reset_domains_experimental.sv",
+      "sha256": "C5B9184855E001060B1B92E1C391911568E799F389FC619975605AC05FD6DA3B",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase4c_reset_mailbox_bd_v1/v4_reset_domains_experimental.sv"
+    },
+    {
+      "order": 20,
+      "project_relative_path": "ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase2a_fix1/v4_sink_slot_gate.v",
+      "sha256": "62BF336A2BBC9A7BDC0A10C99DE09F46E3463C4AEADAD89605BC4ED15D870BC0",
+      "kind": "published_rtl",
+      "snapshot_relative_path": "sources/ch0_cal9_gui12.srcs/sources_1/imports/m3_continuous_hw_v4/v4_integration_phase2a_fix1/v4_sink_slot_gate.v"
+    },
+    {
+      "order": 21,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_adc_packer_8_s.v",
+      "sha256": "8A8886E5C9DBEAAEC7CA3C0DBA12086AF085035677768F0275142B886EC2AADA",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 22,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_fifo_w32_d1024_A.v",
+      "sha256": "064375DC86916708963551DEB00A60C5B8E9C3FC1E95A6982B35BFACF25407F7",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 23,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_hls_deadlock_detection_unit.v",
+      "sha256": "CDF989DAF8ED4D80F04B934BD84DC52355AAE3701961C14ED7407DD54B130FE4",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 24,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_hls_deadlock_idx0_monitor.v",
+      "sha256": "4C87159A67776A043DC9DC3D70AD699963346E2A9CA232CE7D78159D47BCD014",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 25,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_hls_deadlock_idx1_monitor.v",
+      "sha256": "82AAC8EAB1F2BC65FFBD696C29DA6774F0F3766AF44E74F836A70CB4479F0169",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 26,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_hls_deadlock_idx3_monitor.v",
+      "sha256": "415C3E45A98ED46F4FAF5B7DFDEE45ABB1A306F142C56A7D67C1A3F9988695A8",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 27,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_partselect_32ns_256ns_8ns_32_1_1.v",
+      "sha256": "B611C54F6139B66600D37A48269BB1B8381B139F3F48B20FFDE72CF00AB3BA45",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 28,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_partset_32ns_32ns_8ns_5ns_32_1_1.v",
+      "sha256": "DF93BBED72CAF2EA38E589FD844F5D6560A24FBEBE16E80BD35DB68D5C970163",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 29,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_regslice_both.v",
+      "sha256": "2636D170EAD1BE670C39949D47274BE962C9DD32C1084F36AD63AB593D3AB842",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 30,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_start_for_vdif_framer_8_U0.v",
+      "sha256": "3CE475D13BCE65065A2C7CFD64453BAA0E76AD44D4C487BD280D5EF52ADE88A2",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 31,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_vdif_framer_8_s.v",
+      "sha256": "F543E18A5F6DA59EE30FD8C9155294FD61B3F7E1681D580F3F54241AD2B11154",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 32,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer_vdif_packetizer_core_8_s.v",
+      "sha256": "344FBE6B2024544C5E43C88B492E2DEAB1318B31DEAB77B6C4215F397E8E3546",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 33,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ipshared/a0d5/hdl/verilog/vdif_packetizer.v",
+      "sha256": "22841A01CC6621189810E2AB352BBFAE44C5961DBF9B773807B94E5599F49155",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 34,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_vdif_packetizer_0_0/synth/design_1_vdif_packetizer_0_0.v",
+      "sha256": "12E6AA006CB1BB401169F52094C7179A0AFE3BA0ACDF1F73525AA3DC0A3515CD",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 35,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_m25_pps_once_0_0/synth/design_1_m25_pps_once_0_0.v",
+      "sha256": "0CF58956085F3141CA8A942A9C802C8607C0D463621FDA566D83D38970BF6B8E",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 36,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_v4_periodic_ch0_0_0/synth/design_1_v4_periodic_ch0_0_0.v",
+      "sha256": "B0672109DF90C39F3E3E7C84EBF22570AC3EE42DC0055105C3845B78F7D0C17F",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 37,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_v4_slot_gate_0_0/synth/design_1_v4_slot_gate_0_0.v",
+      "sha256": "4F062DD6CFD4A2619596B598651C831B46F90A9379CE301E5B69201D8660714A",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 38,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_v4_pingpong_scalar_0_0/synth/design_1_v4_pingpong_scalar_0_0.v",
+      "sha256": "566D9AFE82CA1FD13AC169E4C0DFB26252AC6237C944E99F8ACE865C0433F853",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 39,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_v4_reset_domains_phase4c_0_0/synth/design_1_v4_reset_domains_phase4c_0_0.v",
+      "sha256": "68BD7C9B23930634035B346A0FE5B0668F2F9ACFDCD3B608D293E2147D180208",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 40,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_v4_link_ready_phase4c_0_0/synth/design_1_v4_link_ready_phase4c_0_0.v",
+      "sha256": "D3EBCD780A0A2D0051DDA1EC02BF7AE6E1205188885946F8788494249DAAF673",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 41,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_v4_mailbox_phase4c_0_0/synth/design_1_v4_mailbox_phase4c_0_0.v",
+      "sha256": "F476C29B21E037D270CA62CDFE042DDB36EEC9F2D946382C18C8B48BE130E31D",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 42,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_ch0_oneshot_gate_0_0/synth/design_1_ch0_oneshot_gate_0_0.v",
+      "sha256": "DA87E3F8FB747D8BB6733654370A0577AD98F1FF69E7426F95BE02489BC6F83A",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 43,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_c8axi_tmp_0/synth/design_1_c8axi_tmp_0.v",
+      "sha256": "294E6FA28EE1D5313463954C8C45E15583351569F554636C96EB1429FADE5113",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 44,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_cal9_hls_sync_reset_0_0/synth/design_1_cal9_hls_sync_reset_0_0.v",
+      "sha256": "34FC2397D9C14633B16EEC5D763AF5F9F3EBFF4100B9CAB0412A5BAC2FD9882D",
+      "kind": "local_generated_dependency"
+    },
+    {
+      "order": 45,
+      "project_relative_path": "ch0_cal9_gui12.gen/sources_1/bd/design_1/ip/design_1_cal9_stream_isolation_0_0/synth/design_1_cal9_stream_isolation_0_0.v",
+      "sha256": "B0B8608C06FD8ED97850135EAD9783087B32E3B494641558073E9ED3787B8A96",
+      "kind": "local_generated_dependency"
+    }
+  ],
+  "tests": [
+    {
+      "testbench": "tests/tb_cal10_p96b.sv",
+      "top": "tb_cal10_p96b",
+      "finish_ns": 755500,
+      "sha256": "FDA18C203D5597F16393F6BF11E805EA981457A6947283765537E81E6B831A57",
+      "marker": "CAL10_PHASE9C6B_FIX1_INTEGRATION_NORMAL_MODEL_PASS"
+    },
+    {
+      "testbench": "tests/tb_cal10_p96c.sv",
+      "top": "tb_cal10_p96c",
+      "finish_ns": 5389216,
+      "sha256": "4AF26841418C63B063CC377DE2705721D4A0E4C148CFD8C822E5ADD4116AB81D",
+      "marker": "CAL10_PHASE9C6C_INTEGRATED_RESET_MODEL_PASS"
+    },
+    {
+      "testbench": "tests/tb_cal10_p96d.sv",
+      "top": "tb_cal10_p96d",
+      "finish_ns": 6689400,
+      "sha256": "77B771175DF74A672E362ACFF2D87B1F1F7062D8F893C740284AABC5900B54AD",
+      "marker": "CAL10_PHASE9C6D_FIX1_BACKPRESSURE_MODEL_PASS"
+    }
+  ]
+}
